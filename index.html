@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>    
+    <title>High Order Functions</title>
+</head>
+<body>
+<section class="section">
+<div class="container has-text-centered">
+    <h1 class="title">
+        JS High Order Functions & Arrays
+    </h1>
+    <br>
+
+<br>
+<h1 class="subtitle">The Arrays</h1>    
+<pre class="is-family-code">
+const companies = [
+    {name: "Company One", category: "Finance", start: 1981, end: 2003},
+    {name: "Company Two", category: "Retail", start: 1992, end: 2008},
+    {name: "Company Three", category: "Auto", start: 1999, end: 2007},
+    {name: "Company Four", category: "Retail", start: 1989, end: 2010},
+    {name: "Company Five", category: "Technologz", start: 2009, end: 2014},
+    {name: "Company Six", category: "Finance", start: 1987, end: 2010},
+    {name: "Company Seven", category: "Auto", start: 1986, end: 1996},
+    {name: "Company Eight", category: "Technologz", start: 2011, end: 2016},
+    {name: "Company Nine", category: "Retail", start: 1981, end: 1989},
+];
+
+const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+</pre>
+<br>
+<h1 class="subtitle">for loop</h1>    
+<pre class="is-family-code">
+for (let i = 0; i < companies.length; i++) {
+    console.log(companies[i])
+}
+</pre>
+<br>
+<h1 class="subtitle">forEach loop</h1>
+<pre>    
+companies.forEach(function (company) {
+    console.log(company)
+});
+</pre>
+<br>
+<h1 class="subtitle">filter with for loop</h1>
+<pre>    
+let canDrink = [];
+for (let i = 0; i < ages.length; i++){
+    if (ages[i] >= 21) {
+        canDrink.push(ages[i]);
+    }
+}
+console.log(canDrink);
+</pre>
+<br>
+<h1 class="subtitle">with filter</h1>
+<pre>    
+const canDrink = ages.filter(function (age) {
+    if (age >= 21) {
+        return true;
+    }
+});
+console.log(canDrink)
+</pre>
+<br>
+<h1 class="subtitle">filter ES6 syntax</h1>
+<pre>    
+const canDrink = ages.filter(age => age >= 21);
+console.log(canDrink)
+</pre>
+<br>
+<h1 class="subtitle">filter by category ES5</h1>
+<pre>    
+const retailCompanies = companies.filter(function (company) {
+    if (company.category === 'Retail') {
+        return true;
+    }
+})
+console.log(retailCompanies)
+</pre>
+<br>
+<h1 class="subtitle">filter by category ES6</h1>
+<pre>    
+const retailCompanies = companies.filter(company => company.category === 'Retail');
+console.log(retailCompanies)
+</pre>
+<br>
+<h1 class="subtitle">map ES5</h1>
+<pre>    
+const companyNames = companies.map(function (company) {
+    return company.name;
+})
+console.log(companyNames)
+</pre>
+<br>
+<h1 class="subtitle">map ES6 short syntax</h1>
+<pre>    
+const agesSquare = ages.map(age => Math.sqrt(age));
+console.log(agesSquare)
+</pre>
+<br>
+<h1 class="subtitle">sort ES5 syntax</h1>
+<pre>    
+const sortedCompanies = companies.sort(function (c1, c2) {
+    if (c1.start > c2.start) {
+        return 1;
+    } else {
+        return -1;
+    }
+});
+console.log(sortedCompanies)
+</pre>
+<br>
+<h1 class="subtitle">sort ES6 short syntax</h1>
+<pre>    
+const sortedCompanies = companies.sort((a, b) => (a.start > b.start ? 1 : -1));
+console.log(sortedCompanies)
+</pre>
+<br>
+<h1 class="subtitle">sort ages array</h1>
+<pre>    
+const sortAges = ages.sort((a,b) => a - b);
+console.log(sortAges)
+</pre>
+<br>
+<h1 class="subtitle">reduce ES5</h1>
+<pre>    
+let ageSum = ages.reduce(function (total, age) {
+    return total + age;
+}, 0);
+console.log(ageSum);
+</pre>
+<br>
+<h1 class="subtitle">reduce ES6</h1>
+<pre>    
+const ageSum = ages.reduce((total, age) => total + age, 0);
+console.log(ageSum);
+</pre>
+<br>
+<h1 class="subtitle">Combine Methods</h1>
+<pre>    
+const combined = ages
+    .map(age => age * 2)
+    .filter(age => age >= 40)
+    .sort((a, b) => a - b)
+    .reduce((a, b) => a + b, 0);
+console.log(combined);
+</pre>
+    
+    </div>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>
